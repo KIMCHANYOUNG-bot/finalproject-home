@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.eventAndNotice.service.impl.EventAndNoticeMapper">
+	<!--이벤트 공지사항 전체조회 (특별히 뷰를 위해서 쓰이진 않을것 같다. 파라메터 넘기기용)  -->
+	<select id="getSearchEventAndNotice" resultType="eventAndNoticeVO">
+	SELECT * FROM eventAndNotice
+	</select>
+	<!--이벤트 공지사항 게시판 하나 선택해서 전체조회 -->
+	<select id="getSearchEventAndNoticeSelect" resultType="eventAndNoticeVO"
+									parameterType="eventAndNoticeVO" > 
+	SELECT * 
+	FROM eventAndNotice
+	WHERE CATEGORY= #{category}
+	</select>
+	<!--이벤트 공지사항 게시판 하나 선택 단건조회 -->
+	<select id="getEventAndNotice" resultType="eventAndNoticeVO"
+									parameterType="eventAndNoticeVO" > 
+	SELECT * 
+	FROM eventAndNotice
+	WHERE TITLE= #{title}
+	</select>
+	
+	<!--이벤트 공지사항 등록을 위해서 카테고리 항목을 넘겨줘야함.   -->
+	<select id="getSearchEventAndNoticeSelectCr4" resultType="eventAndNoticeVO"
+									parameterType="eventAndNoticeVO" > 
+	SELECT * 
+	FROM eventAndNotice
+	WHERE CATEGORY= #{category}
+	</select>
+	
+	<!--이벤트와 공지사항의 등록-->
+	<insert id="insertEventAndNotice" parameterType="eventAndNoticeVO"> 
+	INSERT INTO EVENTANDNOTICE
+	( EANNUMBER ,
+	  WRITER , 
+	  TITLE ,
+	  CONTENT , 
+	  STARTDATE , 
+	  ENDDATE ,
+      IMAGE , 
+      VIEWS , 
+      CATEGORY , 
+      MEMBERID
+      
+	) VALUES(
+	  (SELECT NVL(MAX(EANNUMBER),0)+1 FROM EVENTANDNOTICE) ,
+	  'admin' ,
+	  #{title} ,
+	  #{content} ,
+	  #{startDate} ,
+	  #{endDate} ,
+	  #{image} ,
+	  #{views} ,
+	  #{category} ,
+	  'admin'
+	) 
+	
+	</insert>
+</mapper>
+
+<!-- 스프링 초기설정 오류방지용 -->
