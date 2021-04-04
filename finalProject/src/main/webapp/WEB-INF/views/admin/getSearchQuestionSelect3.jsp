@@ -17,7 +17,7 @@
 	<h3>문의하기-신고하기(관리자 찬영)</h3>
 		<table>
 	<c:forEach var="getSearchQuestionSelect3" items="${getSearchQuestionSelect3}">
-		 <tr onclick="location.href='getQuestion3?title=${getSearchQuestionSelect3.title}'">
+		 <tr onclick="location.href='getQuestion3?questionNumber=${getSearchQuestionSelect3.questionNumber}'">
 		
 		 <td>제목</td>
 		 <td>${getSearchQuestionSelect3.title}</td>

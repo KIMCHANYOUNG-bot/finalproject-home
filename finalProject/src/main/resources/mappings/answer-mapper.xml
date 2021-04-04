@@ -68,6 +68,18 @@
 		'admin' ,
 		#{questionNumber}
 		)
+		<!-- 답변전체조회 관리자-->
 	</insert>
+	
+	
+	<select id="getSearchAnswerCr4" resultType="answerVO"
+								>
+		SELECT * FROM ANSWER
+	</select>
+	
+	<select id="getSearchAnswer2Cr4" resultType="answerVO"
+								>
+		SELECT * FROM ANSWER
+	</select>
 	
 </mapper>

@@ -163,9 +163,43 @@ public class Controller4 {
 		return  "eventAndNotice/getEventAndNotice";
 	}
 	
-	//이벤트 
+	//이벤트  or 공지사항 수정 선택
+	@GetMapping("/updateEventAndNotice")
+	public String updateEventAndNotice(EventAndNoticeVO vo , Model model ) {
+		System.out.println("updateEventAndNotice의 vo" + vo);
+		eventAndNoticeService.getEventAndNotice(vo);
+		model.addAttribute("getEventAndNotice" , eventAndNoticeService.getEventAndNotice(vo) );
+		return "eventAndNotice/updateEventAndNotice";
+
+	}
+	//이벤트 or 공지사항 처리 
+	@PostMapping("/updateEventAndNotice")
+	public String updateEventAndNoticeProc(EventAndNoticeVO vo ) {
+		System.out.println("updateEventAndNoticeProc의 vo" + vo);
+		eventAndNoticeService.updateEventAndNotice(vo);
+		return "eventAndNotice/updateEventAndNotice";
+	}
+	@PostMapping("/deleteEventAndNotice")
+	public String deleteEventAndNoticeProc(EventAndNoticeVO vo , Model model) {
+		System.out.println("삭제 vo "+ vo);
+		eventAndNoticeService.deleteEventAndNotice(vo);
+		model.addAttribute("deleteEventAndNotice" , eventAndNoticeService.deleteEventAndNotice(vo));
+		return "redirect:/";
+	}
+	
 	
 	// ####★★문의하기-신고하기 에 관한 컨트롤러 ★★ (question & answer 테이블 함께 사용)
+	
+	@GetMapping("/insertQuestion2")			//문의하기 2.고객센터문의 접수 	로그인해서 세션넘기기
+	public String insertQuestion2(QuestionVO vo ) {
+		return "admin/insertQuestion2";
+	}
+	@PostMapping("/insertQuestion2")		//문의하기 2.고객센터문의 접수 
+	public String insertQuestion2Proc(QuestionVO vo) {
+		System.out.println(vo);
+		questionService.insertQuestion2(vo);
+		return "redirect:/getSearchQuestionSelect2";
+	}
 	
 	@GetMapping("/insertQuestion3")			//문의하기 3.신고접수 페이지 넘기기	
 	public String insertQuestion3(QuestionVO vo ) {
@@ -194,6 +228,37 @@ public class Controller4 {
 		return "admin/getSearchQuestionSelect2";
 	}
 	
+	@GetMapping("/getQuestion2")	// 문의하기 상세조회 신고하기
+	public String getQuestion2(QuestionVO vo , Model model) {
+		System.out.println(vo);
+		questionService.getQuestion2(vo);
+		model.addAttribute("getQuestion2" , questionService.getQuestion2(vo));
+		return "admin/getQuestion2";
+	}
+	
+	
+	@GetMapping("/getQuestion2Ans")	// 문의하기 상세조회 신고하기
+	public String getQuestion2Ans(QuestionVO vo , Model model) {
+		questionService.getQuestion2Ans(vo);
+		model.addAttribute("getQuestion2Ans" , questionService.getQuestion2Ans(vo));
+		return "admin/insertAnswer2Cr4";
+	}
+	
+	@PostMapping("/insertAnswer2Cr4")	//문의하기 에 답장하기
+	public String insertAnswer2Cr4(AnswerVO vo) {
+		System.out.println(vo);
+		answerService.insertAnswer2Cr4(vo);
+		return "redirect:/";
+	}
+	@RequestMapping("/getSearchAnswer2Cr4") //답장 전체보기
+	public String getSearchAnswer2Cr4(AnswerVO  vo, Model model ) {
+		answerService.getSearchAnswer2Cr4(vo);
+		model.addAttribute("getSearchAnswer2Cr4" , answerService.getSearchAnswer2Cr4(vo));
+		return "admin/getSearchAnswer2Cr4";	// 이기능이 작동이 안된다 월요일 해결.
+		 
+	}	
+	
+	
 	
 	@RequestMapping("/getSearchQuestionSelect3")	//3번은 신고하기
 	public String getSearchQuestionSelect3(QuestionVO vo, Model model) {
@@ -203,7 +268,8 @@ public class Controller4 {
 	
 	
 	@GetMapping("/getQuestion3")	// 문의하기 상세조회 신고하기
-	public String getQuestion(QuestionVO vo , Model model) {
+	public String getQuestion3(QuestionVO vo , Model model) {
+		System.out.println(vo);
 		questionService.getQuestion3(vo);
 		model.addAttribute("getQuestion3" , questionService.getQuestion3(vo));
 		return "admin/getQuestion3";
@@ -214,12 +280,21 @@ public class Controller4 {
 		model.addAttribute("getQuestion3Ans" , questionService.getQuestion3Ans(vo));
 		return "admin/insertAnswerCr4";
 	}
-	@PostMapping("/insertAnswerCr4")
-	public String insertAnswerCr4(AnswerVO vo , Model model) {
+	@PostMapping("/insertAnswerCr4")	//신고에 답장하기
+	public String insertAnswerCr4(AnswerVO vo) {
 		System.out.println(vo);
 		answerService.insertAnswerCr4(vo);
-		return "admin/insertAnswerCr4";
+		return "redirect:/";
 	}
+	@RequestMapping("/getSearchAnswerCr4") //답장 전체보기
+	public String getSearchAnswerCr4(AnswerVO  vo, Model model ) {
+		answerService.getSearchAnswerCr4(vo);
+		model.addAttribute("getSearchAnswerCr4" , answerService.getSearchAnswerCr4(vo));
+		return "admin/getSearchAnswerCr4";	// 이기능이 작동이 안된다 월요일 해결.
+		 
+	}
+
+	
 	
 	
 }//end

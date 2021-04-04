@@ -22,9 +22,9 @@
 	<input type="hidden" id="questionNumber" name="questionNumber" value="${getQuestion3Ans.questionNumber}"> <br>
 	</p>
 	<button type="submit">유저에게 답장보내기</button> <p>
-	<button>해당신고내용으로가기 </button>
-	<h7>해당내용의 단건조회로 넘어가서 신고목록에서 삭제하시오.</h7>
 </form>
+	<a href="getSearchAnswerCr4">신고내용으로가기 </a>
+	<h7>해당내용의 단건조회로 넘어가서 신고목록에서 삭제하시오. 이기능은 안된다.</h7>
 
 
 </body>

@@ -17,6 +17,16 @@ public class AnswerServiceimpl implements AnswerService{
 	public int insertAnswer(AnswerVO vo) {
 		return AnswerMapper.insertAnswer(vo);
 	}
+	
+	
+	
+	//고객센터 2문의하기 답장등록
+	@Override
+	public int insertAnswer2Cr4(AnswerVO vo) {
+		return AnswerMapper.insertAnswer2Cr4(vo);
+	}
+	
+	//고객센터 3신고하기 답장등록
 	@Override
 	public int insertAnswerCr4(AnswerVO vo) {
 		return AnswerMapper.insertAnswerCr4(vo);
@@ -31,6 +41,17 @@ public class AnswerServiceimpl implements AnswerService{
 	public List<AnswerVO> getSearchAnswer(AnswerVO vo) {
 		return AnswerMapper.getSearchAnswer(vo);
 	}
+	//전체조회(찬영)
+	@Override
+	public List<AnswerVO> getSearchAnswerCr4(AnswerVO vo) {
+		return AnswerMapper.getSearchAnswerCr4(vo);
+		}
+	
+	@Override
+	public List<AnswerVO> getSearchAnswer2Cr4(AnswerVO vo) {
+		return AnswerMapper.getSearchAnswer2Cr4(vo);
+		}
+	
 	//수정
 	@Override
 	public int updateAnswer(AnswerVO vo) {

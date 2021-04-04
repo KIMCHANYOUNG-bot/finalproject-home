@@ -57,6 +57,27 @@
 	) 
 	
 	</insert>
+	<update id="updateEventAndNotice" parameterType="eventAndNoticeVO"
+	 > 
+		UPDATE EVENTANDNOTICE SET
+		
+			   TITLE = #{title}   
+		      , CONTENT = #{content}     
+			  , STARTDATE  = #{startDate}     
+			  , ENDDATE    = #{endDate}   
+			  , IMAGE = #{image}   
+			  , VIEWS  = #{views} 
+			  , CATEGORY  = #{category}      
+		   
+		
+		WHERE EANNUMBER = #{eanNumber}
+	</update>
+	<delete id="deleteEventAndNotice" parameterType="eventAndNoticeVO" >
+	DELETE FROM EVENTANDNOTICE
+	WHERE TITLE=#{title}
+	
+	</delete>
+	
 </mapper>
 
 <!-- 스프링 초기설정 오류방지용 -->

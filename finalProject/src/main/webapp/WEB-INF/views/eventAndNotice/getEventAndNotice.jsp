@@ -32,7 +32,14 @@ table, tr, td {
 	</div>
 	<div id="2" align="center">
 	
+	
+
 	<table>
+	
+	<tr>
+	<td>번호</td> 
+	<td>${getEventAndNotice.eanNumber}</td>
+	</tr>
 	<tr>
 	<td>글쓴이</td> 
 	<td>${getEventAndNotice.writer}</td>
@@ -62,6 +69,11 @@ table, tr, td {
 	<td>${getEventAndNotice.views}</td>
 	</tr>
 	</table>
+	<button type="button" onclick="location.href='updateEventAndNotice?title=${getEventAndNotice.title}'">수정</button>
+	<button type="button" onclick="location.href='deleteEventAndNotice?title=${getEventAndNotice.title}'">삭제</button>
+	
 	</div>
+	
+	
 </body>
 </html>

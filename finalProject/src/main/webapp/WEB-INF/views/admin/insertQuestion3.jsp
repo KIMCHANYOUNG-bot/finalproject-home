@@ -13,7 +13,7 @@
 		내용: <input id="content" name="content"> <br>
 		글쓴이: <input id="writer" name="writer"> <br>
 		MId: <input id="memberId" name="memberId"> <br>
-		
+		<h7>로그인해서 세션가져오기</h7> <br>
 	 	<!-- 받는사람<input type="hidden" id="toPerson" name="toPerson" value="admin"> <br> -->
 	
 		<button type="submit">신고접수</button>
